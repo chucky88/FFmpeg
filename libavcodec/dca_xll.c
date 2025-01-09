@@ -1064,9 +1064,9 @@ static int parse_frame(DCAXllDecoder *s, const uint8_t *data, int size, DCAExssA
 
         extradata_syncword = show_bits_long(&s->gb, 32);
 
-        if (extradata_syncword == DCA_SYNCWORD_XLL_X) {
+        if (extradata_syncword == DCA_SYNCWORD_XLL_X_1 || extradata_syncword == DCA_SYNCWORD_XLL_X_2) {
             s->x_syncword_present = 1;
-        } else if ((extradata_syncword >> 1) == (DCA_SYNCWORD_XLL_X_IMAX >> 1)) {
+        } else if (extradata_syncword == DCA_SYNCWORD_XLL_X_IMAX) {
             s->x_imax_syncword_present = 1;
         }
     }
